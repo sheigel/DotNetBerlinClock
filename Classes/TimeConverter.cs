@@ -9,7 +9,7 @@ namespace BerlinClock
     {
         public string convertTime(string aTime)
         {
-            throw new NotImplementedException();
+            return "asdf";
         }
     }
 }

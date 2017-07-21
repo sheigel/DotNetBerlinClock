@@ -10,6 +10,10 @@
 //  </auto-generated>
 // ------------------------------------------------------------------------------
 #region Designer generated code
+
+using NUnit.Framework;
+using NUnit.Framework.Internal;
+
 #pragma warning disable
 namespace BerlinClock.BDD
 {
@@ -18,7 +22,7 @@ namespace BerlinClock.BDD
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.9.0.77")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
+    [TestFixture()]
     public partial class TheBerlinClockFeature
     {
         
@@ -27,8 +31,8 @@ namespace BerlinClock.BDD
 #line 1 "BerlinClockFeatureSteps.feature"
 #line hidden
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
-        public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
+        [TestFixtureSetUp()]
+        public  void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "The Berlin Clock", "As a clock enthusiast\r\n  I want to tell the time using the Berlin Clock\r\n  So tha" +
@@ -36,24 +40,24 @@ namespace BerlinClock.BDD
             testRunner.OnFeatureStart(featureInfo);
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.ClassCleanupAttribute()]
-        public static void FeatureTearDown()
+        [TestFixtureTearDown()]
+        public  void FeatureTearDown()
         {
             testRunner.OnFeatureEnd();
             testRunner = null;
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestInitializeAttribute()]
+        [SetUp()]
         public virtual void TestInitialize()
         {
             if (((TechTalk.SpecFlow.FeatureContext.Current != null) 
                         && (TechTalk.SpecFlow.FeatureContext.Current.FeatureInfo.Title != "The Berlin Clock")))
             {
-                BerlinClock.BDD.TheBerlinClockFeature.FeatureSetup(null);
+                FeatureSetup();
             }
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCleanupAttribute()]
+        [TearDown()]
         public virtual void ScenarioTearDown()
         {
             testRunner.OnScenarioEnd();
@@ -69,9 +73,9 @@ namespace BerlinClock.BDD
             testRunner.CollectScenarioErrors();
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Midnight 00:00")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "The Berlin Clock")]
+        [Test()]
+        [DescriptionAttribute("Midnight 00:00")]
+        [NUnit.Framework.Property("FeatureTitle", "The Berlin Clock")]
         public virtual void Midnight0000()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Midnight 00:00", ((string[])(null)));
@@ -86,9 +90,9 @@ testRunner.Then("the clock should look like", "Y\r\nOOOO\r\nOOOO\r\nOOOOOOOOOOO\
             this.ScenarioCleanup();
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Middle of the afternoon")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "The Berlin Clock")]
+        [Test()]
+        [DescriptionAttribute("Middle of the afternoon")]
+        [NUnit.Framework.Property("FeatureTitle", "The Berlin Clock")]
         public virtual void MiddleOfTheAfternoon()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Middle of the afternoon", ((string[])(null)));
@@ -103,9 +107,9 @@ testRunner.Then("the clock should look like", "O\r\nRROO\r\nRRRO\r\nYYROOOOOOOO\
             this.ScenarioCleanup();
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Just before midnight")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "The Berlin Clock")]
+        [Test()]
+        [DescriptionAttribute("Just before midnight")]
+        [NUnit.Framework.Property("FeatureTitle", "The Berlin Clock")]
         public virtual void JustBeforeMidnight()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Just before midnight", ((string[])(null)));
@@ -120,9 +124,9 @@ testRunner.Then("the clock should look like", "O\r\nRRRR\r\nRRRO\r\nYYRYYRYYRYY\
             this.ScenarioCleanup();
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Midnight 24:00")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "The Berlin Clock")]
+        [Test()]
+        [DescriptionAttribute("Midnight 24:00")]
+        [NUnit.Framework.Property("FeatureTitle", "The Berlin Clock")]
         public virtual void Midnight2400()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Midnight 24:00", ((string[])(null)));
