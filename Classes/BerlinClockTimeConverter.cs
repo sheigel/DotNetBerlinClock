@@ -23,8 +23,8 @@ namespace BerlinClock
 		{
 			var allRows = new[]
 			{
-				SecondsRows(seconds), 
-				HoursRows(hours), 
+				SecondsRows(seconds),
+				HoursRows(hours),
 				MinutesRows(minutes)
 			}.SelectMany(x => x);
 			return string.Join("\r\n", allRows);
@@ -50,12 +50,18 @@ namespace BerlinClock
 
 		public static string[] MinutesRows(int minutes)
 		{
-			return new[] {"", BuildSecondMinutesRow(minutes)};
+			return new[] {BuildFirstMinutesRow(), BuildSecondMinutesRow(minutes)};
+		}
+
+		private static string BuildFirstMinutesRow()
+		{
+			return "".PadRight(11, OffLamp);
 		}
 
 		private static string BuildSecondMinutesRow(int minutes)
 		{
-			return "";
+			var lampsOnCount = minutes % 5;
+			return string.Join("", Enumerable.Repeat(YellowLamp, lampsOnCount)).PadRight(4, OffLamp);
 		}
 	}
 }

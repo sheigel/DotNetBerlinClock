@@ -19,7 +19,6 @@ namespace BerlinClock
 			}
 		}
 
-		
 		[TestFixture]
 		public class ConvertHours
 		{
@@ -53,8 +52,54 @@ namespace BerlinClock
 			{
 				Assert.AreEqual(expected, BerlinClockTimeConverter.HoursRows(hours).Last(), $"converting {hours} hours");
 			}
-			
-			
+		}
+
+		[TestFixture]
+		public class ConvertMinutes
+		{
+			[Test]
+			public void GeneratesTwoRowsOfLamp()
+			{
+				Assert.AreEqual(2, BerlinClockTimeConverter.MinutesRows(0).Length);
+			}
+
+			[Test]
+			public void FirstRowHas11Lamps()
+			{
+				Assert.AreEqual(11, BerlinClockTimeConverter.MinutesRows(0).First().Length);
+			}
+
+			[Test]
+			public void SecondRowHas4Lamps()
+			{
+				Assert.AreEqual(4, BerlinClockTimeConverter.MinutesRows(0).Last().Length);
+			}
+
+			[TestCase("OOOOOOOOOOO", 0)]
+			[TestCase("OOOOOOOOOOO", 1)]
+			[TestCase("YOOOOOOOOOO", 5)]
+			[TestCase("OOOOOOOOOOO", 12)]
+			[TestCase("OOOOOOOOOOO", 15)]
+			[TestCase("OOOOOOOOOOO", 24)]
+			public void FirstRow_EachLampIs5Minutes(string expected, int minutes)
+			{
+				Assert.AreEqual(expected, BerlinClockTimeConverter.MinutesRows(minutes)[0],
+					$"converting {minutes} minutes");
+			}
+
+			[TestCase("OOOO", 0)]
+			[TestCase("YOOO", 1)]
+			[TestCase("YYOO", 2)]
+			[TestCase("YYYY", 4)]
+			[TestCase("OOOO", 5)]
+			[TestCase("YOOO", 6)]
+			[TestCase("YYOO", 12)]
+			[TestCase("YYYO", 13)]
+			[TestCase("YYYY", 59)]
+			public void SecondRow_EachLampIs1Minute(string expected, int minutes)
+			{
+				Assert.AreEqual(expected, BerlinClockTimeConverter.MinutesRows(minutes).Last(), $"converting {minutes} minutes");
+			}
 		}
 	}
 }
