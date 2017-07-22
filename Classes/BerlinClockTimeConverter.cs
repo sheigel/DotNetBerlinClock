@@ -17,7 +17,7 @@ namespace BerlinClock
 
 		private string ConvertTime(int hours, int minutes, int seconds)
 		{
-			return $"{ConvertSeconds(seconds)}\r\n{ConvertMinutes(minutes)}\r\n{ConvertHours(hours)}";
+			return $"{ConvertSeconds(seconds)}\r\n{ConvertHours(hours)}\r\n{ConvertMinutes(minutes)}";
 		}
 
 		public static string ConvertSeconds(int timeSecond)
