@@ -13,9 +13,16 @@ namespace BerlinClock
 		{
 			[Test]
 			[ExpectedException(typeof(ArgumentOutOfRangeException))]
-			public void Fails_Negative_Seconds()
+			public void Fails_Negative()
 			{
 				BerlinClockTimeConverter.SecondsRows(-1);
+			}
+
+			[Test]
+			[ExpectedException(typeof(ArgumentOutOfRangeException))]
+			public void Fails_MoreThan59()
+			{
+				BerlinClockTimeConverter.SecondsRows(60);
 			}
 
 			[TestCase(new[] {"Y"}, 0)]
@@ -32,6 +39,20 @@ namespace BerlinClock
 		[TestFixture]
 		public class ConvertHours
 		{
+			[Test]
+			[ExpectedException(typeof(ArgumentOutOfRangeException))]
+			public void Fails_Negative()
+			{
+				BerlinClockTimeConverter.HoursRows(-1);
+			}
+
+			[Test]
+			[ExpectedException(typeof(ArgumentOutOfRangeException))]
+			public void Fails_MoreThan25()
+			{
+				BerlinClockTimeConverter.HoursRows(25);
+			}
+
 			[Test]
 			public void GeneratesTwoRowsOfLamp()
 			{
@@ -67,6 +88,20 @@ namespace BerlinClock
 		[TestFixture]
 		public class ConvertMinutes
 		{
+			[Test]
+			[ExpectedException(typeof(ArgumentOutOfRangeException))]
+			public void Fails_Negative()
+			{
+				BerlinClockTimeConverter.SecondsRows(-1);
+			}
+
+			[Test]
+			[ExpectedException(typeof(ArgumentOutOfRangeException))]
+			public void Fails_MoreThan59()
+			{
+				BerlinClockTimeConverter.SecondsRows(60);
+			}
+
 			[Test]
 			public void GeneratesTwoRowsOfLamp()
 			{

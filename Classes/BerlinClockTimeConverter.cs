@@ -32,11 +32,20 @@ namespace BerlinClock
 
 		public static string[] SecondsRows(int timeSecond)
 		{
+			if (timeSecond < 0 || timeSecond > 59)
+			{
+				throw new ArgumentOutOfRangeException(nameof(timeSecond), "seconds have to be between 00 and 59");
+			}
 			return timeSecond % 2 == 0 ? new[] {YellowLamp.ToString()} : new[] {OffLamp.ToString()};
 		}
 
 		public static string[] HoursRows(int hours)
 		{
+			if (hours < 0 || hours > 24)
+			{
+				throw new ArgumentOutOfRangeException(nameof(hours), "hours have to be between 00 and 24");
+			}
+
 			var firstRowLampsOnCount = hours / 5;
 			var secondRowLampsOnCount = hours % 5;
 			return new[] {BuildHourRow(firstRowLampsOnCount), BuildHourRow(secondRowLampsOnCount)};
@@ -50,6 +59,10 @@ namespace BerlinClock
 
 		public static string[] MinutesRows(int minutes)
 		{
+			if (minutes < 0 || minutes > 59)
+			{
+				throw new ArgumentOutOfRangeException(nameof(minutes), "minutes have to be between 00 and 59");
+			}
 			return new[] {BuildFirstMinutesRow(minutes), BuildSecondMinutesRow(minutes)};
 		}
 
