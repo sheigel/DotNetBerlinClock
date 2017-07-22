@@ -31,21 +31,27 @@ namespace BerlinClock
 
 		public static string[] ConvertMinutes(int minutes)
 		{
-			return new[] {MinutesFirstRow(minutes), MinutesSecondRow(minutes)};
+			
+			string MinutesFirstRow()
+			{
+				var lampsCount = minutes / 5;
+
+				return string.Join("", Enumerable.Repeat(RedLamp, lampsCount)).PadLeft(4, OffLamp);
+			}
+
+			string MinutesSecondRow()
+			{
+				var lampsCount = minutes % 5;
+				return BuildMinutesRow(lampsCount);
+			}
+			return new[] {MinutesFirstRow(), MinutesSecondRow()};
 		}
 
-		private static string MinutesFirstRow(int minutes)
+		private static string BuildMinutesRow(int lampsOnCount)
 		{
-			var lampsCount = minutes / 5;
-
-			return string.Join("", Enumerable.Repeat(RedLamp, lampsCount)).PadLeft(4, OffLamp);
+			return string.Join("", Enumerable.Repeat(RedLamp, lampsOnCount)).PadLeft(4, OffLamp);
 		}
 
-		private static string MinutesSecondRow(int minutes)
-		{
-			var lampsCount = minutes % 5;
-			return string.Join("", Enumerable.Repeat(RedLamp, lampsCount)).PadLeft(4, OffLamp);
-		}
 
 		public static string ConvertHours(int hour)
 		{
