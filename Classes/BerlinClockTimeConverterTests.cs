@@ -31,8 +31,9 @@ namespace BerlinClock
 
 			[TestCase("OOOO", 0)]
 			[TestCase("OOOO", 1)]
+			[TestCase("OOOO", 4)]
 			[TestCase("ROOO", 5)]
-			[TestCase("RROO", 12)]
+			[TestCase("RROO", 13)]
 			[TestCase("RRRO", 15)]
 			[TestCase("RRRR", 24)]
 			public void FirstRow_EachLampIs5Hours(string expected, int hours)
@@ -45,12 +46,15 @@ namespace BerlinClock
 			[TestCase("ROOO", 1)]
 			[TestCase("RRRR", 4)]
 			[TestCase("OOOO", 5)]
-			[TestCase("RROO", 12)]
+			[TestCase("RRRO", 13)]
+			[TestCase("OOOO", 15)]
 			[TestCase("RRRR", 24)]
 			public void SecondRow_EachLampIs1Hour(string expected, int hours)
 			{
 				Assert.AreEqual(expected, BerlinClockTimeConverter.HoursRows(hours).Last(), $"converting {hours} hours");
 			}
+			
+			
 		}
 	}
 }

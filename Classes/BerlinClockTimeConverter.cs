@@ -21,7 +21,12 @@ namespace BerlinClock
 
 		private string ConvertTime(int hours, int minutes, int seconds)
 		{
-			var allRows = new[] {SecondsRows(seconds), HoursRows(minutes), MinutesRows(hours)}.SelectMany(x => x);
+			var allRows = new[]
+			{
+				SecondsRows(seconds), 
+				HoursRows(hours), 
+				MinutesRows(minutes)
+			}.SelectMany(x => x);
 			return string.Join("\r\n", allRows);
 		}
 
