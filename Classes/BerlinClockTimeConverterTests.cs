@@ -77,10 +77,16 @@ namespace BerlinClock
 
 			[TestCase("OOOOOOOOOOO", 0)]
 			[TestCase("OOOOOOOOOOO", 1)]
+			[TestCase("OOOOOOOOOOO", 4)]
 			[TestCase("YOOOOOOOOOO", 5)]
-			[TestCase("OOOOOOOOOOO", 12)]
-			[TestCase("OOOOOOOOOOO", 15)]
-			[TestCase("OOOOOOOOOOO", 24)]
+			[TestCase("YOOOOOOOOOO", 6)]
+			[TestCase("YYOOOOOOOOO", 12)]
+			[TestCase("YYOOOOOOOOO", 13)]
+			[TestCase("YYOOOOOOOOO", 14)]
+			[TestCase("YYYOOOOOOOO", 15)]
+			[TestCase("YYYOOOOOOOO", 16)]
+			[TestCase("YYYYOOOOOOO", 24)]
+			[TestCase("YYYYYOOOOOO", 25)]
 			public void FirstRow_EachLampIs5Minutes(string expected, int minutes)
 			{
 				Assert.AreEqual(expected, BerlinClockTimeConverter.MinutesRows(minutes)[0],
@@ -89,12 +95,16 @@ namespace BerlinClock
 
 			[TestCase("OOOO", 0)]
 			[TestCase("YOOO", 1)]
-			[TestCase("YYOO", 2)]
 			[TestCase("YYYY", 4)]
 			[TestCase("OOOO", 5)]
 			[TestCase("YOOO", 6)]
 			[TestCase("YYOO", 12)]
 			[TestCase("YYYO", 13)]
+			[TestCase("YYYY", 14)]
+			[TestCase("OOOO", 15)]
+			[TestCase("YOOO", 16)]
+			[TestCase("YYYY", 24)]
+			[TestCase("OOOO", 25)]
 			[TestCase("YYYY", 59)]
 			public void SecondRow_EachLampIs1Minute(string expected, int minutes)
 			{

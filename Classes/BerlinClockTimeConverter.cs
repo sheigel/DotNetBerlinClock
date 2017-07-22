@@ -50,12 +50,15 @@ namespace BerlinClock
 
 		public static string[] MinutesRows(int minutes)
 		{
-			return new[] {BuildFirstMinutesRow(), BuildSecondMinutesRow(minutes)};
+			return new[] {BuildFirstMinutesRow(minutes), BuildSecondMinutesRow(minutes)};
 		}
 
-		private static string BuildFirstMinutesRow()
+		private static string BuildFirstMinutesRow(int minutes)
 		{
-			return "".PadRight(11, OffLamp);
+			var lampsOnCount = minutes / 5;
+
+			return string.Join("", Enumerable.Repeat(YellowLamp, lampsOnCount)).PadRight(11, OffLamp);
+
 		}
 
 		private static string BuildSecondMinutesRow(int minutes)
