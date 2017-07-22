@@ -21,7 +21,8 @@ namespace BerlinClock
 
 		private string ConvertTime(int hours, int minutes, int seconds)
 		{
-			return $"{ConvertSeconds(seconds)}\r\n{ConvertHours(hours)}\r\n{ConvertMinutes(minutes)}";
+			var allRows = new[] {ConvertSeconds(seconds), ConvertHours(hours), ConvertMinutes(minutes)}.SelectMany(x => x);
+			return string.Join("\r\n", allRows);
 		}
 
 		public static string[] ConvertSeconds(int timeSecond)
@@ -42,9 +43,9 @@ namespace BerlinClock
 		}
 
 
-		public static string ConvertHours(int hour)
+		public static string[] ConvertHours(int hour)
 		{
-			return hour.ToString();
+			return new[] {hour.ToString()};
 		}
 	}
 }
