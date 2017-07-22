@@ -55,11 +55,30 @@ namespace BerlinClock
 
 		private static string BuildFirstMinutesRow(int minutes)
 		{
-			var lampsOnCount = minutes / 5;
-
-			return string.Join("", Enumerable.Repeat(YellowLamp, lampsOnCount)).PadRight(11, OffLamp);
-
+			return string.Join("", GenerateMinutesLamps(minutes)).PadRight(11, OffLamp);
 		}
+
+		private static IEnumerable<char> GenerateMinutesLamps(int minutes)
+		{
+			bool IsQuarterLamp(int i)
+			{
+				return i * 5 % 15 == 0;
+			}
+
+			var lampsOnCount = minutes / 5;
+			for (var i = 1; i <= lampsOnCount; i++)
+			{
+				if (IsQuarterLamp(i))
+				{
+					yield return RedLamp;
+				}
+				else
+				{
+					yield return YellowLamp;
+				}
+			}
+		}
+
 
 		private static string BuildSecondMinutesRow(int minutes)
 		{
