@@ -87,7 +87,17 @@ namespace BerlinClock
 			[TestCase("YYYOOOOOOOO", 16)]
 			[TestCase("YYYYOOOOOOO", 24)]
 			[TestCase("YYYYYOOOOOO", 25)]
-			public void FirstRow_EachLampIs5Minutes(string expected, int minutes)
+			public void FirstRow_EachLamp_Is5Minutes(string expected, int minutes)
+			{
+				Assert.AreEqual(expected, BerlinClockTimeConverter.MinutesRows(minutes)[0],
+					$"converting {minutes} minutes");
+			}
+
+			[TestCase("YYROOOOOOOO", 15)]
+			[TestCase("YYRYYROOOOO", 30)]
+			[TestCase("YYRYYRYYROO", 45)]
+			[TestCase("YYRYYRYYRYY", 59)]
+			public void FirstRow_EveryQuarter_IsRedLamp(string expected, int minutes)
 			{
 				Assert.AreEqual(expected, BerlinClockTimeConverter.MinutesRows(minutes)[0],
 					$"converting {minutes} minutes");
