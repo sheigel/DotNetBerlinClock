@@ -36,7 +36,7 @@ namespace BerlinClock
 			{
 				var lampsCount = minutes / 5;
 
-				return string.Join("", Enumerable.Repeat(RedLamp, lampsCount)).PadLeft(4, OffLamp);
+				return BuildMinutesRow(lampsCount);
 			}
 
 			string MinutesSecondRow()
@@ -44,7 +44,10 @@ namespace BerlinClock
 				var lampsCount = minutes % 5;
 				return BuildMinutesRow(lampsCount);
 			}
-			return new[] {MinutesFirstRow(), MinutesSecondRow()};
+
+			var minutesFirstRow = MinutesFirstRow();
+			var minutesSecondRow = MinutesSecondRow();
+			return new[] {minutesFirstRow, minutesSecondRow};
 		}
 
 		private static string BuildMinutesRow(int lampsOnCount)
