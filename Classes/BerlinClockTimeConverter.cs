@@ -22,17 +22,17 @@ namespace BerlinClock
 {ConvertHours(hours)}";
 		}
 
-		private string ConvertSeconds(int timeSecond)
+		public static string ConvertSeconds(int timeSecond)
 		{
-			return timeSecond.ToString();
+			return timeSecond % 2 == 0 ? "Y" : "O";
 		}
 
-		private string ConvertMinutes(int minutes)
+		public static string ConvertMinutes(int minutes)
 		{
 			return minutes.ToString();
 		}
 
-		private string ConvertHours(int hour)
+		public static string ConvertHours(int hour)
 		{
 			return hour.ToString();
 		}
