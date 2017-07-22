@@ -39,7 +39,7 @@ namespace BerlinClock
 
 		private static string BuildHourRow(int lampsOnCount)
 		{
-			return string.Join("", Enumerable.Repeat(RedLamp, lampsOnCount)).PadLeft(4, OffLamp);
+			return string.Join("", Enumerable.Repeat(RedLamp, lampsOnCount)).PadRight(4, OffLamp);
 		}
 
 

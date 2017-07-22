@@ -31,9 +31,9 @@ namespace BerlinClock
 
 			[TestCase("OOOO", 0)]
 			[TestCase("OOOO", 1)]
-			[TestCase("OOOR", 5)]
-			[TestCase("OORR", 12)]
-			[TestCase("ORRR", 15)]
+			[TestCase("ROOO", 5)]
+			[TestCase("RROO", 12)]
+			[TestCase("RRRO", 15)]
 			[TestCase("RRRR", 24)]
 			public void FirstRow_EachLampIs5Hours(string expected, int hours)
 			{
@@ -42,10 +42,10 @@ namespace BerlinClock
 			}
 
 			[TestCase("OOOO", 0)]
-			[TestCase("OOOR", 1)]
+			[TestCase("ROOO", 1)]
 			[TestCase("RRRR", 4)]
 			[TestCase("OOOO", 5)]
-			[TestCase("OORR", 12)]
+			[TestCase("RROO", 12)]
 			[TestCase("RRRR", 24)]
 			public void SecondRow_EachLampIs1Hour(string expected, int hours)
 			{
