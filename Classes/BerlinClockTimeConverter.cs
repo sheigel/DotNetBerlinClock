@@ -8,6 +8,10 @@ namespace BerlinClock
 {
 	public class BerlinClockTimeConverter : ITimeConverter
 	{
+		private const char RedLamp = 'R';
+		private const char OffLamp = 'O';
+		private const char YellowLamp = 'Y';
+
 		public string ConvertTime(string time)
 		{
 			var timeElements = time.Split(':').Select(el => Convert.ToInt32(el)).ToArray();
@@ -20,14 +24,27 @@ namespace BerlinClock
 			return $"{ConvertSeconds(seconds)}\r\n{ConvertHours(hours)}\r\n{ConvertMinutes(minutes)}";
 		}
 
-		public static string ConvertSeconds(int timeSecond)
+		public static string[] ConvertSeconds(int timeSecond)
 		{
-			return timeSecond % 2 == 0 ? "Y" : "O";
+			return timeSecond % 2 == 0 ? new[] {YellowLamp.ToString()} : new[] {OffLamp.ToString()};
 		}
 
-		public static string ConvertMinutes(int minutes)
+		public static string[] ConvertMinutes(int minutes)
 		{
-			return minutes.ToString();
+			return new[] {MinutesFirstRow(minutes), MinutesSecondRow(minutes)};
+		}
+
+		private static string MinutesFirstRow(int minutes)
+		{
+			var lampsCount = minutes / 5;
+
+			return string.Join("", Enumerable.Repeat(RedLamp, lampsCount)).PadLeft(4, OffLamp);
+		}
+
+		private static string MinutesSecondRow(int minutes)
+		{
+			var lampsCount = minutes % 5;
+			return string.Join("", Enumerable.Repeat(RedLamp, lampsCount)).PadLeft(4, OffLamp);
 		}
 
 		public static string ConvertHours(int hour)
