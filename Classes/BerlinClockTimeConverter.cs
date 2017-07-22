@@ -31,23 +31,9 @@ namespace BerlinClock
 
 		public static string[] ConvertMinutes(int minutes)
 		{
-			
-			string MinutesFirstRow()
-			{
-				var lampsCount = minutes / 5;
-
-				return BuildMinutesRow(lampsCount);
-			}
-
-			string MinutesSecondRow()
-			{
-				var lampsCount = minutes % 5;
-				return BuildMinutesRow(lampsCount);
-			}
-
-			var minutesFirstRow = MinutesFirstRow();
-			var minutesSecondRow = MinutesSecondRow();
-			return new[] {minutesFirstRow, minutesSecondRow};
+			var firstRowLampsOnCount = minutes / 5;
+			var secondRowLampsOnCount = minutes % 5;
+			return new[] {BuildMinutesRow(firstRowLampsOnCount), BuildMinutesRow(secondRowLampsOnCount)};
 		}
 
 		private static string BuildMinutesRow(int lampsOnCount)
