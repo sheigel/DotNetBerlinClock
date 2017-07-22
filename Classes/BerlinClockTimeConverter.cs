@@ -21,31 +21,36 @@ namespace BerlinClock
 
 		private string ConvertTime(int hours, int minutes, int seconds)
 		{
-			var allRows = new[] {ConvertSeconds(seconds), ConvertHours(hours), ConvertMinutes(minutes)}.SelectMany(x => x);
+			var allRows = new[] {SecondsRows(seconds), HoursRows(minutes), MinutesRows(hours)}.SelectMany(x => x);
 			return string.Join("\r\n", allRows);
 		}
 
-		public static string[] ConvertSeconds(int timeSecond)
+		public static string[] SecondsRows(int timeSecond)
 		{
 			return timeSecond % 2 == 0 ? new[] {YellowLamp.ToString()} : new[] {OffLamp.ToString()};
 		}
 
-		public static string[] ConvertMinutes(int minutes)
+		public static string[] HoursRows(int hours)
 		{
-			var firstRowLampsOnCount = minutes / 5;
-			var secondRowLampsOnCount = minutes % 5;
-			return new[] {BuildMinutesRow(firstRowLampsOnCount), BuildMinutesRow(secondRowLampsOnCount)};
+			var firstRowLampsOnCount = hours / 5;
+			var secondRowLampsOnCount = hours % 5;
+			return new[] {BuildHourRow(firstRowLampsOnCount), BuildHourRow(secondRowLampsOnCount)};
 		}
 
-		private static string BuildMinutesRow(int lampsOnCount)
+		private static string BuildHourRow(int lampsOnCount)
 		{
 			return string.Join("", Enumerable.Repeat(RedLamp, lampsOnCount)).PadLeft(4, OffLamp);
 		}
 
 
-		public static string[] ConvertHours(int hour)
+		public static string[] MinutesRows(int minutes)
 		{
-			return new[] {hour.ToString()};
+			return new[] {"", BuildSecondMinutesRow(minutes)};
+		}
+
+		private static string BuildSecondMinutesRow(int minutes)
+		{
+			return "";
 		}
 	}
 }
