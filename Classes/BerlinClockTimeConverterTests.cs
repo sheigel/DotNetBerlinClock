@@ -1,5 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
+using Assert = NUnit.Framework.Assert;
 
 namespace BerlinClock
 {
@@ -8,6 +11,13 @@ namespace BerlinClock
 		[TestFixture]
 		public class ConvertSeconds
 		{
+			[Test]
+			[ExpectedException(typeof(ArgumentOutOfRangeException))]
+			public void Fails_Negative_Seconds()
+			{
+				BerlinClockTimeConverter.SecondsRows(-1);
+			}
+
 			[TestCase(new[] {"Y"}, 0)]
 			[TestCase(new[] {"O"}, 1)]
 			[TestCase(new[] {"Y"}, 2)]
